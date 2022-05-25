@@ -1,0 +1,131 @@
+{% extends 'hrms/layout.html' %}
+{% load static %}
+{% block title %} Покинуть| HRIS {% endblock title %}
+
+{% block content %}
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'hrms:dashboard' %}">Панель приборов</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Покинуть управление</li>
+                    </ol>
+                </nav>
+                <div class="col-lg-12 grid-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-center text-primary"><i class="fa  fa-check-square-o">&emsp; Отпуск
+                                сотрудника
+                                Управление </i></h4>
+                            <hr>
+                            <form class="form-group" method="POST">
+                                {% csrf_token %}
+                                <small class="mb-5">** Все поля обязательны к заполнению</small><br>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Дата начала
+                                            </th>
+
+                                            <th>
+                                                Дата окончания
+                                            </th>
+                                            <th>
+                                                Статус
+                                            </th>
+                                            <th>
+                                                Работник
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="py-1">
+                                                {{ form.start }}
+                                            </td>
+
+                                            <td>
+                                                {{ form.end }}
+                                            </td>
+                                            <td>
+                                                {{ form.status }}
+                                            </td>
+                                            <td>
+                                                {{ form.employee }}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-rounded btn-outline-success"><i class="mdi mdi-check"></i>Отправить
+                                    </button>
+                                    </button>
+                                </div>
+                            </form>
+                            <br>
+                            <h4 class="text-center text-primary"><i class="fa  fa-sign-in">&emsp; Одобренный
+                                Приложения </i></h4>
+                            <hr>
+                            {% if leaves %}
+                                <small class='text-center'>Это список утвержденных штатных сотрудников.
+                                    заявление. </small>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Дата начала
+                                            </th>
+
+                                            <th>
+                                                Дата окончания
+                                            </th>
+                                            <th>
+                                                Статус
+                                            </th>
+                                            <th>
+                                                Работник
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for leave in leaves %}
+                                            <tr>
+                                                <td class="py-1">
+                                                    {{ leave.start }}
+                                                </td>
+                                                <td>
+                                                    <strong>{{ leave.end }}</strong>
+                                                </td>
+                                                <td>
+
+                                                    <strong>{{ leave.status }}</strong>
+                                                </td>
+                                                <td>
+                                                    {{ leave.employee }}
+                                                </td>
+                                                <td>
+
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <p class="lead"> На данный момент заявления на отпуск нет. </p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock content %}

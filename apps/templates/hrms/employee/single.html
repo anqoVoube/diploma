@@ -1,0 +1,158 @@
+{% extends 'hrms/layout.html' %}
+{% load static %}
+{% block title %} Информация о сотруднике | HRIS {% endblock title %}
+{% block content %}
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <div class="col-lg-12 grid-margin">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'hrms:dashboard' %}">Панель приборов</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><a
+                                    href=" {% url 'hrms:employee_all' %} ">Работник</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Посмотреть</li>
+                        </ol>
+                    </nav>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-center text-primary"><i class="fa fa-address-book-o">&emsp; Сотрудники
+                                Профиль</i></h4>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-2 col-md-2 d-flex align-items-stretch grid-margin">
+
+                                    <div class="card border-top border-bottom border-success">
+                                        <div class="card-body">
+                                            <img src="{{ employee.thumb.url }}" alt="" class="img-fluid" width='200px'
+                                                 height='200px'>
+                                            <p class="lead mt-2 text-center">
+                                                {{ employee.emp_id | capfirst }} <br>
+                                                <small class='text-center text-secondary'>( ID )</small>
+                                            </p>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!-- Second column -->
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="table-responsive border-top border-success table-striped">
+                                        <p class="lead text-center mt-2">Личная информация.</p>
+                                        <table class="table">
+                                            <tr>
+                                                <th style="width:50%">Имя:</th>
+                                                <td>{{ employee.first_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Фамилия</th>
+                                                <td>{{ employee.last_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Мобильный:</th>
+                                                <td>{{ employee.mobile }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Эл. адрес:</th>
+                                                <td>{{ employee.email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Пол:</th>
+                                                <td>{{ employee.gender }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Отделение:</th>
+                                                <td>{{ employee.department }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Язык:</th>
+                                                <td>{{ employee.language | capfirst }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Месячная зарплата:</th>
+                                                <td>#{{ employee.salary }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Дата поступления на работу:</th>
+                                                <td>{{ employee.joined }} </td>
+                                            </tr>
+                                            <tr>
+                                                <th>ИНН:</th>
+                                                <td>{{ employee.nuban }} </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Банк:</th>
+                                                <td>{{ employee.bank }} </td>
+
+                                            </tr>
+
+                                        </table>
+                                        <div class="text-center mt-3">
+                                            <a href=" {% url 'hrms:employee_update' pk=employee.id %}"
+                                               class="btn btn-lg btn-warning">Обновлять</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Third column-->
+
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="table-responsive border-top border-success  table-striped">
+                                        <p class="lead text-center mt-2">Близкий родственник</p>
+                                        <table class="table">
+                                            {% if kin %}
+                                                <tr>
+                                                    <th style="width:50%">Имя:</th>
+                                                    <td>{{ kin.first_name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Фамилия</th>
+                                                    <td>{{ kin.last_name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Мобильный:</th>
+                                                    <td>{{ kin.mobile }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Адрес:</th>
+                                                    <td>{{ kin.address }} </td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Занятие:</th>
+                                                    <td>{{ kin.occupation | capfirst }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>Относительный:</th>
+                                                    <td>{{ kin.employee.first_name }}
+                                                        - {{ kin.employee.last_name }} </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td><a href="{% url 'hrms:kin_update' pk=kin.pk id=employee.id %}"
+                                                           class=" btn btn-warning"> Обновить близкий родственник</a>
+                                                    </td>
+                                                </tr>
+                                            {% else %}
+                                                <p class="lead text-center">
+                                                    OOPs! <br> Информация о близкий родственник не указана.
+                                                </p>
+
+                                                <div class="text-center">
+                                                    <a href="{% url 'hrms:kin_add' id=employee.id %}"
+                                                       class='btn btn-danger btn-rounded'> <i
+                                                            class="mdi mdi-upload"></i> Загрузить сейчас </a>
+                                                </div>
+
+                                            {% endif %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock content %}
