@@ -3,7 +3,7 @@
 
     <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <p class="display-4 mt-3 text-success">HRIS</p>
-        <a class="navbar-brand brand-logo-mini" href="{% url 'hrms:dashboard' %}">
+        <a class="navbar-brand brand-logo-mini" href="{% url 'apps:dashboard' %}">
 
             <img src="{{ user.thumb.url }}"/>
         </a>
@@ -19,7 +19,7 @@
                     <img class="img-xs rounded-circle" src=" {{ user.thumb.url }} " alt="Profile image">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                    <a class="dropdown-item" href='{% url 'hrms:logout' %}'>
+                    <a class="dropdown-item" href='{% url 'apps:logout' %}'>
                         Выйти
                     </a>
                 </div>

@@ -19,7 +19,7 @@ class Department(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse("hrms:dept_detail", kwargs={"pk": self.pk})
+        return reverse("apps:dept_detail", kwargs={"pk": self.pk})
 
 
 class Employee(models.Model):
@@ -45,7 +45,7 @@ class Employee(models.Model):
         return self.first_name
 
     def get_absolute_url(self):
-        return reverse("hrms:employee_view", kwargs={"pk": self.pk})
+        return reverse("apps:employee_view", kwargs={"pk": self.pk})
 
 
 class Kin(models.Model):
@@ -60,7 +60,7 @@ class Kin(models.Model):
         return self.first_name + '-' + self.last_name
 
     def get_absolute_url(self):
-        return reverse("hrms:employee_view", kwargs={'pk': self.employee.pk})
+        return reverse("apps:employee_view", kwargs={'pk': self.employee.pk})
 
 
 class Attendance(models.Model):

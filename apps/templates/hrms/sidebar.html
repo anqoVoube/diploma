@@ -14,31 +14,31 @@
                   </div>
                 </div>
               </div>
-              <a href="{% url 'hrms:employee_new' %}" class="btn btn-success btn-block">Новые сотрудники
+              <a href="{% url 'apps:employee_new' %}" class="btn btn-success btn-block">Новые сотрудники
                 <i class="mdi mdi-plus"></i>
               </a>
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'hrms:dashboard' %}">
+            <a class="nav-link" href="{% url 'apps:dashboard' %}">
               <i class="fa  fa-dashboard"></i>
               <span class="menu-title">&emsp;Панель приборов</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'hrms:employee_all' %}" aria-expanded="false" aria-controls="ui-basic">
+            <a class="nav-link" href="{% url 'apps:employee_all' %}" aria-expanded="false" aria-controls="ui-basic">
               <i class="fa fa-list text-dark"></i>
               <span class="menu-title">&emsp;Работник</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'hrms:attendance_new' %}">
+            <a class="nav-link" href="{% url 'apps:attendance_new' %}">
               <i class="fa fa-calendar"></i>
               <span class="menu-title">&emsp;Посещаемость</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'hrms:leave_new' %}">
+            <a class="nav-link" href="{% url 'apps:leave_new' %}">
               <i class="fa fa-sign-out "></i>
               <span class="menu-title">&emsp;Покинуть</span>
             </a>
@@ -50,7 +50,7 @@
               <span class="menu-title">&emsp;Отделение</span>
               <i class="menu-arrow"></i>
             </a>
-              <a class="nav-link" href="{% url 'hrms:dept_new' %}"><i class="fa fa-plus"></i>&emsp;Новый отдел</a>
+              <a class="nav-link" href="{% url 'apps:dept_new' %}"><i class="fa fa-plus"></i>&emsp;Новый отдел</a>
               
             <hr>
 
@@ -67,14 +67,14 @@
 
 
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'hrms:recruitmentall' %}">
+            <a class="nav-link" href="{% url 'apps:recruitmentall' %}">
               <i class="fa fa-database"></i>
               <span class="menu-title">&emsp;Прием на работу</span>
             </a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'hrms:payroll' %}">
+            <a class="nav-link" href="{% url 'apps:payroll' %}">
               <i class="fa fa-usd"></i>
               <span class="menu-title">&emsp;Платежная ведомость</span>
             </a>

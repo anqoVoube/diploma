@@ -10,7 +10,7 @@
                     <div class="card">
                         <div class="card-body">
                             <span class="lead">{{ dept.name | capfirst }} Отделение <a
-                                    href="{% url 'hrms:dept_update' dept.pk %}"
+                                    href="{% url 'apps:dept_update' dept.pk %}"
                                     class="btn btn-rounded btn-success float-right"> <i class="fa fa-edit"></i>  Обновить информацию</a></span>
                             <hr>
                             <div class="row">
@@ -44,7 +44,7 @@
                                                                         <p>{{ employee.last_name|capfirst }}.{{ employee.first_name|slice:1 }}</p>
                                                                         <p>({{ employee.emp_id|capfirst }})</p>
                                                                         <div>
-                                                                            <a href="{% url 'hrms:employee_view' pk=employee.pk %}"
+                                                                            <a href="{% url 'apps:employee_view' pk=employee.pk %}"
                                                                                class=" badge badge-info">Посмотреть
                                                                                 профиль</a>
                                                                         </div>

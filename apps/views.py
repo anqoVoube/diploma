@@ -24,7 +24,7 @@ class Register(CreateView):
     model = get_user_model()
     form_class = RegistrationForm
     template_name = 'hrms/registrations/register.html'
-    success_url = reverse_lazy('hrms:login')
+    success_url = reverse_lazy('apps:login')
 
 
 class Login_View(LoginView):
@@ -41,7 +41,7 @@ class Logout_View(View):
 
     def get(self, request):
         logout(self.request)
-        return redirect('hrms:login', permanent=True)
+        return redirect('apps:login', permanent=True)
 
 
 # Main Board
@@ -103,7 +103,7 @@ class Employee_Update(LoginRequiredMixin, UpdateView):
 def delete_employee(request, pk):
     employee = Employee.objects.get(pk=pk)
     employee.delete()
-    return redirect('hrms:employee_all')
+    return redirect('apps:employee_all')
 
 
 class Employee_Kin_Add(LoginRequiredMixin, CreateView):
@@ -167,7 +167,7 @@ class Department_Update(LoginRequiredMixin, UpdateView):
     template_name = 'hrms/department/edit.html'
     form_class = DepartmentForm
     login_url = 'apps:login'
-    success_url = reverse_lazy('hrms:dashboard')
+    success_url = reverse_lazy('apps:dashboard')
 
 
 # Attendance View
@@ -177,7 +177,7 @@ class Attendance_New(LoginRequiredMixin, CreateView):
     form_class = AttendanceForm
     login_url = 'apps:login'
     template_name = 'hrms/attendance/create.html'
-    success_url = reverse_lazy('hrms:attendance_new')
+    success_url = reverse_lazy('apps:attendance_new')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -195,7 +195,7 @@ class Attendance_Out(LoginRequiredMixin, View):
             Q(staff__id=self.kwargs['pk']) & Q(status='PRESENT') & Q(date=timezone.localdate()))
         user.last_out = timezone.localtime()
         user.save()
-        return redirect('hrms:attendance_new')
+        return redirect('apps:attendance_new')
 
 
 class LeaveNew(LoginRequiredMixin, CreateView, ListView):
@@ -203,7 +203,7 @@ class LeaveNew(LoginRequiredMixin, CreateView, ListView):
     template_name = 'hrms/leave/create.html'
     form_class = LeaveForm
     login_url = 'apps:login'
-    success_url = reverse_lazy('hrms:leave_new')
+    success_url = reverse_lazy('apps:leave_new')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -222,7 +222,7 @@ class RecruitmentNew(CreateView):
     model = Recruitment
     template_name = 'hrms/recruitment/index.html'
     form_class = RecruitmentForm
-    success_url = reverse_lazy('hrms:recruitment')
+    success_url = reverse_lazy('apps:recruitment')
 
 
 class RecruitmentAll(LoginRequiredMixin, ListView):
@@ -238,7 +238,7 @@ class RecruitmentDelete(LoginRequiredMixin, View):
     def get(self, request, pk):
         form_app = Recruitment.objects.get(pk=pk)
         form_app.delete()
-        return redirect('hrms:recruitmentall', permanent=True)
+        return redirect('apps:recruitmentall', permanent=True)
 
 
 class Pay(LoginRequiredMixin, ListView):

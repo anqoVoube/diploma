@@ -11,7 +11,7 @@
                     <div class="card">
                         <div class="card-body">
                            <h4 class="text-center text-primary"><i class="fa fa-plus">&emsp; Новый сотрудник </i></h4><hr>
-                                <form enctype="multipart/form-data" action="{% url 'hrms:employee_new' %}" class="form-group" method="POST">
+                                <form enctype="multipart/form-data" action="{% url 'apps:employee_new' %}" class="form-group" method="POST">
                                     {% csrf_token %}
                                     <small class="mb-5">** Все поля обязательны к заполнению</small>
                                         {{form.as_p}}

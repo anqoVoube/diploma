@@ -9,9 +9,9 @@
                 <div class="col-lg-12 grid-margin">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{% url 'hrms:dashboard' %}">Панель приборов</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'apps:dashboard' %}">Панель приборов</a></li>
                             <li class="breadcrumb-item active" aria-current="page"><a
-                                    href=" {% url 'hrms:employee_all' %} ">Работник</a></li>
+                                    href=" {% url 'apps:employee_all' %} ">Работник</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Посмотреть</li>
                         </ol>
                     </nav>
@@ -90,7 +90,7 @@
 
                                         </table>
                                         <div class="text-center mt-3">
-                                            <a href=" {% url 'hrms:employee_update' pk=employee.id %}"
+                                            <a href=" {% url 'apps:employee_update' pk=employee.id %}"
                                                class="btn btn-lg btn-warning">Обновлять</a>
                                         </div>
                                     </div>
@@ -129,7 +129,7 @@
                                                 </tr>
 
                                                 <tr>
-                                                    <td><a href="{% url 'hrms:kin_update' pk=kin.pk id=employee.id %}"
+                                                    <td><a href="{% url 'apps:kin_update' pk=kin.pk id=employee.id %}"
                                                            class=" btn btn-warning"> Обновить близкий родственник</a>
                                                     </td>
                                                 </tr>
@@ -139,7 +139,7 @@
                                                 </p>
 
                                                 <div class="text-center">
-                                                    <a href="{% url 'hrms:kin_add' id=employee.id %}"
+                                                    <a href="{% url 'apps:kin_add' id=employee.id %}"
                                                        class='btn btn-danger btn-rounded'> <i
                                                             class="mdi mdi-upload"></i> Загрузить сейчас </a>
                                                 </div>

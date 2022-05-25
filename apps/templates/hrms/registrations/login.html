@@ -30,7 +30,7 @@
             </div>
             <p class="display-4 mb-4 text-center text-secondary">Портал входа администратора</p>
             <div class="auto-form-wrapper mb-5">
-              <form action=" {% url 'hrms:login' %} " method ='POST'>
+              <form action=" {% url 'apps:login' %} " method ='POST'>
                 {% csrf_token %}
                 <div class="form-group">
                   <label class="label">Имя пользователя</label>
@@ -59,11 +59,11 @@
                 </div>               
                 <div class="text-block text-center my-3">
                   <span class="text-small font-weight-semibold">Не авторизованный?</span>
-                  <a href="{%  url 'hrms:reg'  %} " class="text-black text-small">Создать новый аккаунт</a>
+                  <a href="{%  url 'apps:reg'  %} " class="text-black text-small">Создать новый аккаунт</a>
                 </div>
               </form>
             </div>
-            <p class="footer-text text-center mt-4">авторское право © {{ 2022}} Ife Iron and Steel. Все права защищены.</p>
+{#            <p class="footer-text text-center mt-4">авторское право © {{ 2022}} Ife Iron and Steel. Все права защищены.</p>#}
           </div>
         </div>
       </div>

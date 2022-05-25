@@ -10,7 +10,7 @@
             <div class="row">
             <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'hrms:dashboard' %}">Панель приборов</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'apps:dashboard' %}">Панель приборов</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Работник </li>
                         <li class="breadcrumb-item active" aria-current="page">Все</li>
                     </ol>
@@ -18,7 +18,7 @@
             <div class="col-lg-12 grid-margin">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Все работники<a href="{% url 'hrms:employee_new' %}" class="btn btn-sm btn-success mb-3 float-right">Добавить новое +</a></h4>
+                  <h4 class="card-title">Все работники<a href="{% url 'apps:employee_new' %}" class="btn btn-sm btn-success mb-3 float-right">Добавить новое +</a></h4>
                     
                   <div class="table-responsive">
                     <table class="table table-bordered">
@@ -69,12 +69,12 @@
                                <i class="fa fa-cog "></i> Управлять
                               </button>
                               <div class="dropdown-menu">
-                                <a class="dropdown-item" href="{% url 'hrms:employee_view' pk=employee.pk %}">
+                                <a class="dropdown-item" href="{% url 'apps:employee_view' pk=employee.pk %}">
                                   <i class="fa fa-eye text-success fa-fw"></i>Посмотреть</a>
-                                <a class="dropdown-item" href="{% url 'hrms:employee_update' pk=employee.pk %}">
+                                <a class="dropdown-item" href="{% url 'apps:employee_update' pk=employee.pk %}">
                                   <i class="fa fa-edit text-info fa-fw"></i>Редактировать</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{% url 'hrms:employee_delete' pk=employee.pk %}">
+                                <a class="dropdown-item" href="{% url 'apps:employee_delete' pk=employee.pk %}">
                                   <i class="fa fa-trash text-danger fa-fw"></i>Удалить</a>
                               </div>
                             </div>                  

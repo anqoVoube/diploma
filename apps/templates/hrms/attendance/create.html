@@ -9,7 +9,7 @@
             <div class="row">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url 'hrms:dashboard' %}">Панель приборов</a></li>
+                        <li class="breadcrumb-item"><a href="{% url 'apps:dashboard' %}">Панель приборов</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Посещаемость</li>
                     </ol>
                 </nav>
@@ -109,7 +109,7 @@
                                                     {{ ps.staff.first_name }} - {{ ps.staff.last_name }}
                                                 </td>
                                                 <td>
-                                                    <a href="{% url 'hrms:attendance_out' pk=ps.staff.pk %}"
+                                                    <a href="{% url 'apps:attendance_out' pk=ps.staff.pk %}"
                                                             {% if not ps.last_out %}
                                                        class="btn btn-sm btn-info"  {% endif %}
                                                        class="btn btn-sm btn-info disabled"> <i

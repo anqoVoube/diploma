@@ -9,7 +9,7 @@
                 <div class="col-lg-12 grid-margin">
                     <div class="card">
                         <div class="card-body">
-                            <span class="lead">{{dept.name | capfirst}} Department <a href="{% url 'hrms:dept_update' dept.pk %}" class="btn btn-rounded btn-success float-right"> <i class="fa fa-edit"></i>  Update Info</a></span><hr>    
+                            <span class="lead">{{dept.name | capfirst}} Department <a href="{% url 'apps:dept_update' dept.pk %}" class="btn btn-rounded btn-success float-right"> <i class="fa fa-edit"></i>  Update Info</a></span><hr>
                                 <div class="row">
                                 <!--First Column-->
                                     <div class="col-lg-5">
@@ -39,7 +39,7 @@
                                                                         <p>{{employee.last_name|capfirst}}.{{employee.first_name|slice:1}}</p>
                                                                         <p>({{employee.emp_id|capfirst}})</p>
                                                                         <div>
-                                                                            <a href="{% url 'hrms:employee_view' pk=employee.pk %}" class=" badge badge-info">view profile</a>
+                                                                            <a href="{% url 'apps:employee_view' pk=employee.pk %}" class=" badge badge-info">view profile</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
