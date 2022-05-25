@@ -1,0 +1,132 @@
+{% extends 'hrms/layout.html' %}
+{% load static %}
+{% block title %} Посещаемость| HRIS {% endblock title %}
+
+{% block content %}
+
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="row">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url 'hrms:dashboard' %}">Панель приборов</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Посещаемость</li>
+                    </ol>
+                </nav>
+                <div class="col-lg-12 grid-margin">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="text-center text-primary"><i class="fa  fa-check-square-o">&emsp; Работник
+                                Посещаемость </i></h4>
+                            <hr>
+                            <form class="form-group" method="POST">
+                                {% csrf_token %}
+                                <small class="mb-5">** Все поля обязательны к заполнению</small><br>
+                                {{ form.errors }}
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Дата
+                                            </th>
+
+                                            <th>
+                                                Штатный сотрудник
+                                            </th>
+                                            <th>
+                                                Статус
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="py-1">
+                                                {{ today }}
+                                            </td>
+
+                                            <td>
+                                                {{ form.staff }}
+                                            </td>
+                                            <td>
+                                                {{ form.status }}
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+                                <div class="text-center mt-3">
+                                    <button class="btn btn-rounded btn-outline-success"><i class="mdi mdi-check"></i>Знак
+                                        в
+                                    </button>
+                                    </button>
+                                </div>
+                            </form>
+                            <br>
+                            <h4 class="text-center text-primary"><i class="fa  fa-sign-in">&emsp; Вошел
+                                Штатный сотрудник (ы) </i></h4>
+                            <hr>
+                            {% if present_staffers %}
+                                <small class='text-center'>Это список сотрудников, которые в настоящее время
+                                    настоящее время. </small>
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>
+                                                Дата
+                                            </th>
+                                            <th>
+                                                Первый в (прибытие)
+                                            </th>
+                                            <th>
+                                                Последний выход (отъезд)
+                                            </th>
+                                            <th>
+                                                Имя
+                                            </th>
+                                            <th>
+                                                Действие(я)
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for ps in present_staffers %}
+                                            <tr>
+                                                <td class="py-1">
+                                                    {{ today }}
+                                                </td>
+                                                <td>
+                                                    <strong>{{ ps.first_in }}</strong>
+                                                </td>
+                                                <td>
+
+                                                    <strong>{{ ps.last_out }}</strong>
+                                                </td>
+                                                <td>
+                                                    {{ ps.staff.first_name }} - {{ ps.staff.last_name }}
+                                                </td>
+                                                <td>
+                                                    <a href="{% url 'hrms:attendance_out' pk=ps.staff.pk %}"
+                                                            {% if not ps.last_out %}
+                                                       class="btn btn-sm btn-info"  {% endif %}
+                                                       class="btn btn-sm btn-info disabled"> <i
+                                                            class="fa fa-sign-out"></i> Выход</a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            {% else %}
+                                <p class="lead"> В настоящее время в системе нет сотрудников</p>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+{% endblock content %}
