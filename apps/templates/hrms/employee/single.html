@@ -2,7 +2,16 @@
 {% load static %}
 {% block title %} Информация о сотруднике | HRIS {% endblock title %}
 {% block content %}
+    <script>function printDiv(divName) {
+     var printContents = document.getElementById(divName).innerHTML;
+     var originalContents = document.body.innerHTML;
 
+     document.body.innerHTML = printContents;
+
+     window.print();
+
+     document.body.innerHTML = originalContents;
+}</script>
     <div class="main-panel">
         <div class="content-wrapper">
             <div class="row">
@@ -63,12 +72,16 @@
                                                 <td>{{ employee.gender }}</td>
                                             </tr>
                                             <tr>
+                                                <th>Дата рождения:</th>
+                                                <td>{{ employee.date_of_birth }}</td>
+                                            </tr>
+                                            <tr>
                                                 <th>Отделение:</th>
                                                 <td>{{ employee.department }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Язык:</th>
-                                                <td>{{ employee.language | capfirst }}</td>
+                                                <td>{{ employee.region | capfirst }}</td>
                                             </tr>
                                             <tr>
                                                 <th>Месячная зарплата:</th>
@@ -91,7 +104,9 @@
                                         </table>
                                         <div class="text-center mt-3">
                                             <a href=" {% url 'apps:employee_update' pk=employee.id %}"
-                                               class="btn btn-lg btn-warning">Обновлять</a>
+                                               class="btn btn-lg btn-warning">Редактивировать</a>
+                                            <input type="button" href=" {% url 'apps:employee_update' pk=employee.id %}"
+                                               class="btn btn-lg btn-success" onClick="window.print(); " value="Скачать PDF">
                                         </div>
                                     </div>
                                 </div>

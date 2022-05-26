@@ -30,6 +30,7 @@ class LoginForm(AuthenticationForm):
 
 class EmployeeForm(forms.ModelForm):
     thumb = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'form-control'}))
+    attachments = forms.ImageField(widget=forms.ClearableFileInput(attrs={'class': 'form-control'}))
     first_name = forms.CharField(strip=True,
                                  widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Имя'}),
                                  label='Имя')
@@ -38,11 +39,16 @@ class EmployeeForm(forms.ModelForm):
                                 label='Фамилия')
     mobile = forms.CharField(strip=True,
                              widget=forms.TextInput(
-                                 attrs={'class': 'form-control', 'placeholder': 'Мобильный телефон'}),
+                                 attrs={'class': 'form-control', 'placeholder': 'Мобильный телефон', }),
                              label='Мобильный телефон')
     email = forms.EmailField(
         widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Электронная почта'}),
         label='Электронная почта')
+
+    date_of_birth = forms.DateField(
+        widget=forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+        label='Дата рождения')
+
     emergency = forms.CharField(
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Срочный контакт'}),
         label='Срочный контакт')
@@ -50,15 +56,15 @@ class EmployeeForm(forms.ModelForm):
                                label='Пол')
     department = forms.ModelChoiceField(Department.objects.all(), required=True, empty_label='Select a department',
                                         widget=forms.Select(attrs={'class': 'form-control'}), label='Отдел')
-    language = forms.ChoiceField(choices=Employee.LANGUAGE, widget=forms.Select(attrs={'class': 'form-control'}),
-                                 label='Язык')
+    region = forms.ChoiceField(choices=Employee.REGION, widget=forms.Select(attrs={'class': 'form-control'}),
+                                 label='Регион')
 
     class Meta:
         model = Employee
         fields = (
-            'first_name', 'last_name', 'mobile', 'email', 'emergency', 'salary', 'gender', 'department', 'bank',
+            'first_name', 'last_name', 'mobile', 'email', 'date_of_birth', 'emergency', 'salary', 'gender', 'department', 'bank',
             'nuban',
-            'language', 'thumb')
+            'region', 'thumb', 'attachments')
         widgets = {
             'salary': forms.TextInput(attrs={'class': 'form-control'}),
             'bank': forms.TextInput(attrs={'class': 'form-control'}),

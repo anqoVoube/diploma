@@ -4,8 +4,12 @@
     <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
         <p class="display-4 mt-3 text-success">HRIS</p>
         <a class="navbar-brand brand-logo-mini" href="{% url 'apps:dashboard' %}">
+        {% if user.thumb %}
+    <img src="{{ user.thumb.url }}"/>
+{% else %}
+    <div>Hello</div>
+{% endif %}
 
-            <img src="{{ user.thumb.url }}"/>
         </a>
     </div>
     <div class="navbar-menu-wrapper d-flex align-items-center">

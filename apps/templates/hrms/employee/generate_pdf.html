@@ -1,0 +1,57 @@
+{% extends 'hrms/layout.html' %}
+{% load static %}
+{% block title %} Информация о сотруднике | HRIS {% endblock title %}
+{% block content %}
+                                        <table class="table">
+                                            <tr>
+                                                <th style="width:50%">Имя:</th>
+                                                <td>{{ employee.first_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Фамилия</th>
+                                                <td>{{ employee.last_name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Мобильный:</th>
+                                                <td>{{ employee.mobile }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Эл. адрес:</th>
+                                                <td>{{ employee.email }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Пол:</th>
+                                                <td>{{ employee.gender }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Дата рождения:</th>
+                                                <td>{{ employee.date_of_birth }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Отделение:</th>
+                                                <td>{{ employee.department }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Язык:</th>
+                                                <td>{{ employee.region | capfirst }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Месячная зарплата:</th>
+                                                <td>#{{ employee.salary }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Дата поступления на работу:</th>
+                                                <td>{{ employee.joined }} </td>
+                                            </tr>
+                                            <tr>
+                                                <th>ИНН:</th>
+                                                <td>{{ employee.nuban }} </td>
+                                            </tr>
+                                            <tr>
+                                                <th>Банк:</th>
+                                                <td>{{ employee.bank }} </td>
+
+                                            </tr>
+
+                                        </table>
+{% endblock content %}
